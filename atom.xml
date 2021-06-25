@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://bsod-qian.github.io/</id>
+    <title>BSOD&apos;s Home</title>
+    <updated>2021-06-25T15:36:00.639Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://bsod-qian.github.io/"/>
+    <link rel="self" href="https://bsod-qian.github.io/atom.xml"/>
+    <subtitle>我们的生活是一台机器，而我们每一个人，都是组成这台机器的零件</subtitle>
+    <logo>https://bsod-qian.github.io/images/avatar.png</logo>
+    <icon>https://bsod-qian.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2021, BSOD&apos;s Home</rights>
+</feed>
