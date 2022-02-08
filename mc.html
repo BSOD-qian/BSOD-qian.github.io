@@ -12,8 +12,8 @@
 <body>
 
   <div class="container-fluid p-5 bg-primary text-white text-center">
-    <h1>地铁计算器<sup><span class="badge bg-secondary">BETA</span></sup></h1>
-    <p id="ua"></p>
+    <h1>地铁计算器<sup><span class="badge bg-secondary">NIGHTLY</span></sup></h1>
+    <p><span id="ua"></span>,0.111B</p>
   </div>
 
   <div class="container mt-5">
@@ -23,10 +23,11 @@
         <button class="btn btn-success" type="submit" onclick="search();">搜索</button>
       </div>
     </div>
-    <p>车号:<span id="num"></span></p>
-    <p>线路:<span id="line"></span></p>
-    <p>特殊性:<span id="sp"></span></p>
-    <p>上线:<span id="on"></span></p>
+    <p>车号:<span id="num">N/A</span></p>
+    <p>线路:<span id="line">N/A</span></p>
+    <p>特殊性:<span id="sp">N/A</span></p>
+    <p>上线:<span id="on">N/A</span></p>
+    <p>本条数据由<span id="con">N/A</span>贡献!</p>
   </div>
   <script>
     function search(){
@@ -38,12 +39,14 @@
           const line = document.getElementById('line')
           const sp = document.getElementById('sp')
           const on = document.getElementById('on')
+          const con = document.getElementById('con')
           num.innerText = data.num
           line.innerText = data.line
           sp.innerText = data.sp
           on.innerHTML = data.on
+          con.innerHTML = data.c
         })
-        .catch(console.error)
+        .catch(num.innerHTML = "输入有误,请检查")
     }
     var ua = navigator.userAgent;
     document.getElementById('ua').innerHTML = ua;
