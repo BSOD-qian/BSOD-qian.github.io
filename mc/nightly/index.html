@@ -27,6 +27,7 @@
     <p>线路:<span id="line">N/A</span></p>
     <p>特殊性:<span id="sp">N/A</span></p>
     <p>上线:<span id="on">N/A</span></p>
+    <p>车型:<span id="type">N/A</span></p>
     <p>本条数据由<span id="con">N/A</span>贡献!</p>
   </div>
   <script>
@@ -39,11 +40,13 @@
           const line = document.getElementById('line')
           const sp = document.getElementById('sp')
           const on = document.getElementById('on')
+          const type = document.getElementById('type')
           const con = document.getElementById('con')
           num.innerText = data.num
           line.innerText = data.line
           sp.innerText = data.sp
           on.innerHTML = data.on
+          type.innerHTML = data.type
           con.innerHTML = data.c
         })
         .catch(num.innerHTML = "输入有误,请检查")
