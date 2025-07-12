@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <meta name="renderer" content="webkit" />
+
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+    <!-- 如果使用了组件的 icon 属性，还需要引入图标的 CSS 文件 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <mdui-top-app-bar style="position: relative;">
+        <mdui-dialog class="example-dialog">
+            <mdui-text-field label="Start time" type="time" id="start"></mdui-text-field>
+            <mdui-text-field label="End time" type="time" id="end"></mdui-text-field>
+            <mdui-button slot="action">关闭</mdui-button>
+        </mdui-dialog>
+        <mdui-button-icon icon="settings"></mdui-button-icon>
+        <mdui-top-app-bar-title>百分比</mdui-top-app-bar-title>
+    </mdui-top-app-bar>
+    <div class="mdui-prose" style="text-align: center;">
+        <h1 id="num">50%</h1><span id="time">--:--:--</span>
+        <mdui-linear-progress value="0.5" id="bar"></mdui-linear-progress>
+    </div>
+    <script>
+        const dialog = document.querySelector(".example-dialog");
+        const openButton = dialog.nextElementSibling;
+        const closeButton = dialog.querySelector("mdui-button");
+
+        openButton.addEventListener("click", () => dialog.open = true);
+        closeButton.addEventListener("click", () => dialog.open = false);
+    </script>
+    <script>
+        var duration = 0;
+        var ed = new Date();
+        var nd = new Date();
+        var percentage = 0;
+        var remainsec = 0;
+        function update() {
+            nd = new Date();
+            duration = ((document.getElementById('end').value.substr(0, 2) - document.getElementById('start').value.substr(0, 2)) * 60 + (document.getElementById('end').value.substr(3, 2) - document.getElementById('start').value.substr(3, 2))) * 60
+            ed.setHours(document.getElementById('end').value.substr(0, 2), document.getElementById('end').value.substr(3, 2), 0, 0)
+            remainsec = (ed.getHours() - nd.getHours()) * 3600 + (ed.getMinutes() - nd.getMinutes()) * 60 + (ed.getSeconds() - nd.getSeconds())
+            percentage = ((ed.getHours() - nd.getHours()) * 3600 + (ed.getMinutes() - nd.getMinutes()) * 60 + (ed.getSeconds() - nd.getSeconds())) / duration
+            document.getElementById('bar').value = percentage;
+            document.getElementById('num').innerHTML = Math.ceil(percentage * 100) + "%";
+            document.getElementById('time').innerHTML = Math.floor(remainsec / 60 / 60).toString().padStart(2, "0") + ":" + Math.floor(remainsec / 60 - Math.floor(remainsec / 60 / 60) * 60).toString().padStart(2, "0") + ":" + Math.floor(remainsec - Math.floor(remainsec / 60) * 60).toString().padStart(2, "0")
+        }
+        setInterval(function () { update() }, 1000)
+    </script>
+</body>
+
+</html>
